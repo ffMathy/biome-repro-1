@@ -1,0 +1,36 @@
+{
+	"name": "WATS",
+	"build": {
+		"dockerfile": "./Dockerfile",
+		"target": "dev-container",
+		"context": ".."
+	},
+	"overrideCommand": true,
+	"privileged": true,
+	"containerEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+		"AWS_REGION": "eu-west-1",
+		"AWS_PROFILE": "sandbox",
+		"NODE_ENV": "development",
+		"WIDGETS_BIX_ERROR_REPORTING_URL": "http://localhost:4201",
+		"REDIS_INSTANCE_ENDPOINT": "localhost",
+		"NODE_OPTIONS": "--max-old-space-size=8192",
+		"TZ": "UTC",
+		"VITE_CJS_IGNORE_WARNING": "true"
+	},
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/root/.aws,type=bind",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.cache,target=/root/.cache,type=bind",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.azure,target=/root/.azure,type=bind"
+	],
+	"remoteUser": "root",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome"
+			]
+		}
+	},
+	"features": {}
+}
