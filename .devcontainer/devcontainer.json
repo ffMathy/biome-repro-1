@@ -19,10 +19,7 @@
 		"VITE_CJS_IGNORE_WARNING": "true"
 	},
 	"mounts": [
-		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/root/.aws,type=bind",
-		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.cache,target=/root/.cache,type=bind",
-		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.azure,target=/root/.azure,type=bind"
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
 	],
 	"remoteUser": "root",
 	"customizations": {
